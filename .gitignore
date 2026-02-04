@@ -34,6 +34,12 @@ models/*.bin
 *.vec
 *.txt.gz
 
+# Large dataset files (download separately)
+Reviews.csv
+database.sqlite
+*.csv
+*.sqlite
+
 # Results
 results/*.png
 results/*.csv
