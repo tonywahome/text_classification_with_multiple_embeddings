@@ -42,6 +42,7 @@ text_classification_with_multiple_embeddings/
 ## Dataset
 
 **Amazon Fine Food Reviews**
+
 - Source: Amazon product reviews
 - Size: ~568,000 reviews
 - Target: Rating scores (1-5 stars)
@@ -51,13 +52,16 @@ text_classification_with_multiple_embeddings/
 ## Methodology
 
 ### Phase 1: Exploratory Data Analysis
+
 - Class distribution analysis
 - Text length patterns
 - Vocabulary statistics
 - Data cleaning requirements
 
 ### Phase 2: Model Development
+
 Each embedding technique follows this pipeline:
+
 1. Text preprocessing (HTML removal, tokenization)
 2. Embedding generation
 3. GRU model training
@@ -65,6 +69,7 @@ Each embedding technique follows this pipeline:
 5. Performance evaluation
 
 ### Phase 3: Comparative Analysis
+
 - Unified performance metrics
 - Statistical significance testing
 - Visualization of results
@@ -79,17 +84,20 @@ Input Layer → Embedding Layer → Bidirectional GRU → Dropout → Dense → 
 ## Setup Instructions
 
 1. **Clone the repository**
+
 ```bash
 git clone https://github.com/tonywahome/text_classification_with_multiple_embeddings.git
 cd text_classification_with_multiple_embeddings
 ```
 
 2. **Install dependencies**
+
 ```bash
 pip install -r requirements.txt
 ```
 
 3. **Download NLTK data**
+
 ```python
 import nltk
 nltk.download('stopwords')
@@ -98,11 +106,12 @@ nltk.download('wordnet')
 ```
 
 4. **Run notebooks in order**
-Start with `01_eda.ipynb` and proceed sequentially through the embedding-specific notebooks.
+   Start with `01_eda.ipynb` and proceed sequentially through the embedding-specific notebooks.
 
 ## Results
 
 Results will be documented in the comparative analysis notebook and final report, including:
+
 - Accuracy, Precision, Recall, F1-Score per embedding
 - Confusion matrices
 - Training curves
@@ -112,6 +121,7 @@ Results will be documented in the comparative analysis notebook and final report
 ## References
 
 Key papers and resources:
+
 - Mikolov et al. (2013) - Word2Vec
 - Pennington et al. (2014) - GloVe
 - Bojanowski et al. (2017) - FastText
