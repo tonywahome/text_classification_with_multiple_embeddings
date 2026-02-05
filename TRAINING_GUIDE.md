@@ -1,4 +1,5 @@
 # GRU Model Training Guide
+
 ## Text Classification with Multiple Word Embeddings
 
 This guide explains how to train and evaluate GRU models with different word embeddings for Amazon Food Reviews classification.
@@ -8,6 +9,7 @@ This guide explains how to train and evaluate GRU models with different word emb
 ## 📋 Overview
 
 The notebook `01_eda.ipynb` now contains a complete implementation for:
+
 - **Data preprocessing** and stratified splitting
 - **Multiple embedding techniques**: TF-IDF, Word2Vec (CBOW & Skip-gram), FastText
 - **Bidirectional GRU models** for sequence-based embeddings
@@ -66,6 +68,7 @@ Execute the following cells in order:
 ### Experiment Tracking
 
 All experiments are automatically logged to:
+
 - **File**: `results/experiments.json`
 - **Contains**:
   - Experiment ID and timestamp
@@ -89,12 +92,13 @@ When evaluating embeddings, focus on:
 ### Expected Performance Range
 
 Based on similar sentiment classification tasks:
+
 - **TF-IDF + Dense**: Accuracy ~55-65%
 - **Word2Vec CBOW**: Accuracy ~58-68%
 - **Word2Vec Skip-gram**: Accuracy ~60-70%
 - **FastText**: Accuracy ~62-72%
 
-*Note: Actual performance depends on data quality and hyperparameters*
+_Note: Actual performance depends on data quality and hyperparameters_
 
 ---
 
@@ -133,6 +137,7 @@ best_config_cbow, best_model_cbow, tuned_results_cbow, tuning_df_cbow = hyperpar
 ### Hyperparameter Search Space
 
 Current search space (modify in cell if needed):
+
 ```python
 {
     'GRU_UNITS': [64, 128, 256],
@@ -170,6 +175,7 @@ Current search space (modify in cell if needed):
 ### Visualizations
 
 Each model generates:
+
 - **Training History**: Loss and accuracy curves showing convergence
 - **Confusion Matrix**: Which classes are confused with each other
 - **Comparison Charts**: Accuracy, F1-score, training time, and epochs across all models
@@ -208,6 +214,7 @@ Each model generates:
 ### Statistical Significance
 
 For academic rigor, consider:
+
 - Running multiple random seeds (3-5 runs)
 - Computing confidence intervals
 - Statistical tests (e.g., paired t-test) between embeddings
@@ -219,11 +226,13 @@ For academic rigor, consider:
 ### Modify Sample Size
 
 For faster experimentation:
+
 ```python
 TRAIN_CONFIG['SAMPLE_SIZE'] = 10000  # Smaller sample
 ```
 
 For full dataset:
+
 ```python
 TRAIN_CONFIG['SAMPLE_SIZE'] = None  # Use all reviews
 ```
@@ -233,6 +242,7 @@ TRAIN_CONFIG['SAMPLE_SIZE'] = None  # Use all reviews
 Default: 30 epochs with early stopping
 
 To increase:
+
 ```python
 TRAIN_CONFIG['EPOCHS'] = 50
 ```
@@ -240,11 +250,13 @@ TRAIN_CONFIG['EPOCHS'] = 50
 ### Change Model Architecture
 
 Modify GRU units:
+
 ```python
 TRAIN_CONFIG['GRU_UNITS'] = 256  # More capacity
 ```
 
 Adjust dropout:
+
 ```python
 TRAIN_CONFIG['DROPOUT_RATE'] = 0.3  # Less regularization
 ```
@@ -254,6 +266,7 @@ TRAIN_CONFIG['DROPOUT_RATE'] = 0.3  # Less regularization
 Current: 200 tokens (captures most reviews)
 
 For longer texts:
+
 ```python
 TRAIN_CONFIG['MAX_SEQUENCE_LENGTH'] = 300
 ```
@@ -265,6 +278,7 @@ TRAIN_CONFIG['MAX_SEQUENCE_LENGTH'] = 300
 ### Memory Issues
 
 If running out of memory:
+
 1. Reduce `SAMPLE_SIZE` to 20,000 or 10,000
 2. Reduce `BATCH_SIZE` to 16
 3. Reduce `MAX_SEQUENCE_LENGTH` to 150
@@ -273,6 +287,7 @@ If running out of memory:
 ### Slow Training
 
 To speed up:
+
 1. Reduce `EPOCHS` to 20
 2. Increase `BATCH_SIZE` to 64 (if memory allows)
 3. Use smaller `SAMPLE_SIZE` for initial testing
@@ -281,6 +296,7 @@ To speed up:
 ### Poor Performance
 
 If accuracy is low (<50%):
+
 1. Check class weights are being used
 2. Verify preprocessing is working (print sample)
 3. Increase model capacity (`GRU_UNITS` = 256)
@@ -290,6 +306,7 @@ If accuracy is low (<50%):
 ### Import Errors
 
 If missing packages:
+
 ```bash
 pip install gensim nltk beautifulsoup4 tensorflow scikit-learn pandas numpy matplotlib seaborn
 ```
@@ -325,15 +342,18 @@ pip install gensim nltk beautifulsoup4 tensorflow scikit-learn pandas numpy matp
 ## 📚 Key References
 
 **Embeddings:**
+
 - Mikolov et al. (2013) - "Efficient Estimation of Word Representations in Vector Space" (Word2Vec)
 - Bojanowski et al. (2017) - "Enriching Word Vectors with Subword Information" (FastText)
 - Pennington et al. (2014) - "GloVe: Global Vectors for Word Representation"
 
 **RNN Architectures:**
+
 - Cho et al. (2014) - "Learning Phrase Representations using RNN Encoder-Decoder" (GRU)
 - Schuster & Paliwal (1997) - "Bidirectional Recurrent Neural Networks"
 
 **Sentiment Analysis:**
+
 - Zhang et al. (2018) - "Deep Learning for Sentiment Analysis: A Survey"
 - Socher et al. (2013) - "Recursive Deep Models for Semantic Compositionality"
 
