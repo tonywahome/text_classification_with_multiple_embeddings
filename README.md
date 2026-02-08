@@ -17,11 +17,15 @@ This project implements and compares GRU-based text classification models using 
 text_classification_with_multiple_embeddings/
 ├── notebooks/
 │   ├── .ipynb_checkpoints/
-│   ├── 01_eda.ipynb
-│   ├── 02_tfidf_dense.ipynb
-│   └── complete_text_classification_project.ipynb
+│   ├── eda.ipynb
+│   ├── Traditional_ML_model_Logistic_Regression.ipynb
+│   ├── 03_emmy_rnn.ipynb
+│   ├── 03_lstm_cbow_skipgram_glove_attention.ipynb
+│   └── GRU.ipynb
 ├── report/
 │   └── academic_report_template.md
+├── results/
+│   └── plots/
 ├── .gitattributes
 ├── .gitignore
 ├── hashes.txt
